@@ -2,4 +2,4 @@ import analisa_ficheiro
 import json
 
 if __name__ == "__main__":
-    ##########FAZER DEPOIS##############
+    analisa_ficheiro.gera_nome("t.txt")
