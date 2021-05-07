@@ -1,0 +1,18 @@
+{
+    "Number Lines": 6,
+    "Number Chars": 61,
+    "Biggest One": "Test Test Test Biggest On",
+    "Number of Chars Occurrences": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 1,
+        "e": 6,
+        "t": 7,
+        "s": 4,
+        "i": 1,
+        "g": 2,
+        "o": 1,
+        "n": 1
+    }
+}

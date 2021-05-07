@@ -18,7 +18,7 @@ def calcula_palavra_comprida(nameFile):
     list = file.readlines()
     for line in list:
         if len(line) > len(bigLine):
-            bigLine = line
+            bigLine = line[:-1]  # [-1] para retirar o /n
     file.close()
     return bigLine
 
@@ -27,8 +27,11 @@ def calcula_ocorrencia_de_letras(nameFile):
     dict = {}
     file = open(nameFile, "r")
     chars = file.read()
-    chars.lower()
     for char in chars:
+        char = char.lower()
         if char.isalpha():
-            dict[char] += 1
+            if char in dict:
+                dict[char] += 1
+            else:
+                dict[char] = 1
     return dict
