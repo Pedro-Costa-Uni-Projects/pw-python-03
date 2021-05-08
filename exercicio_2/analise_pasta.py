@@ -16,8 +16,8 @@ def pede_pasta():
 
 def faz_calculos(path):
     dictionary = {}
-    dir = os.listdir(path)
-    for file in dir:
+    folder = os.listdir(path)
+    for file in folder:
         # juntar o path com o file para o .isfile funcionar
         if os.path.isfile(os.path.join(path, file)):
             # separar o nome do ficheiro com a sua extensão
@@ -34,4 +34,19 @@ def faz_calculos(path):
                 dictionary[ext]["quantidade"] = 1
     return dictionary
 
-def guarda_resultados(dir, path):
+
+def guarda_resultados(dictionary, path):
+    name = os.path.basename(path)
+    name += ".csv"
+    try:
+        file = open(name, 'w', newline='')
+        fields = ["Extensao", "Quantidade", "Tamanho[kByte]"]
+        writer = csv.DictWriter(file, fields)
+        writer.writeheader()
+        for ext in dictionary:
+            newLine = [ext, str(dictionary[ext]["quantidade"]), str(dictionary[ext]["volume"])]
+            writer = csv.DictWriter(file, newLine)
+            writer.writeheader()
+        print(f"Os Resultados Foram Guardados No Ficheiro {name}")
+    except OSError:
+        print("Error Creating CSV File")
