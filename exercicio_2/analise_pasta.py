@@ -47,6 +47,6 @@ def guarda_resultados(dictionary, path):
             newLine = [ext, str(dictionary[ext]["quantidade"]), str(dictionary[ext]["volume"])]
             writer = csv.DictWriter(file, newLine)
             writer.writeheader()
-        print(f"Os Resultados Foram Guardados No Ficheiro {name}")
+        print(f"Os Resultados Foram Guardados No Ficheiro: ´{name}`")
     except OSError:
         print("Error Creating CSV File")
