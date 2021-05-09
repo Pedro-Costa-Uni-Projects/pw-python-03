@@ -24,6 +24,7 @@ def faz_calculos(path):
             splitName = os.path.splitext(file)
             ext = splitName[1][1:]
             sizeBytes = os.path.getsize(os.path.join(path, file))
+            # usar o math.ceil para arrendondar valores
             sizeKB = math.ceil(sizeBytes / 1024)
             if ext in dictionary:
                 dictionary[ext]["volume"] += sizeKB
@@ -50,3 +51,29 @@ def guarda_resultados(dictionary, path):
         print(f"Os Resultados Foram Guardados No Ficheiro: ´{name}`")
     except OSError:
         print("Error Creating CSV File")
+
+
+def faz_grafico_barras(dictionary, path):
+    listKeys = []
+    listValues = []
+    for ext in dictionary:
+        listKeys.append(ext)
+        listValues.append(dictionary[ext]["quantidade"])
+    plt.style.use('seaborn-whitegrid')
+    plt.xlabel("Tipos de Ficheiros")
+    plt.ylabel("Volume")
+    plt.bar(listKeys, listValues)
+    plt.title("Pasta : " + os.path.basename(path))
+    plt.show()
+
+
+def faz_grafico_queijos(dictionary, path):
+    listKeys = []
+    listValues = []
+    for ext in dictionary:
+        listKeys.append(ext)
+        listValues.append(dictionary[ext]["volume"])
+    plt.pie(listValues, labels=listKeys, autopct='%1.0f%%')
+    plt.title("Pasta " + os.path.basename(path) + " : Tamanho[%]")
+    plt.tight_layout()
+    plt.show()
