@@ -28,7 +28,11 @@ def calcula_tamanho_pasta(path):
     return amount
 
 
-if __name__ == "__main__":
+def main():
     path = pede_pasta()
     MBytes = math.ceil(calcula_tamanho_pasta(path))  # math.ceil para arrendondar valores
     print(f"Tamanho Total: {MBytes} MBytes")
+
+
+if __name__ == "__main__":
+    main()
